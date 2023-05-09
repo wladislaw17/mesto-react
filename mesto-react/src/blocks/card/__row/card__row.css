@@ -1,0 +1,6 @@
+.card__row {
+    margin: 22px 15px 22px 21px;
+    display: grid;
+    grid-template-rows: 1;
+    grid-template-columns: 4fr 1fr;
+}
