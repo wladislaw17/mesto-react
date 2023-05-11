@@ -1,6 +1,6 @@
 function ImagePopup(props) {
     return (
-        <div className={`popup popup_view ${props.card ? 'popup_opened' : ''}`}>
+        <div className={`popup popup_view ${props.card.link ? 'popup_opened' : ''}`}>
             <div className="popup__content">
                 <img className="popup__image" src={`${props.card ? props.card.link : ''}`} alt={`${props.card ? props.card.name : ''}`} />
                 <p className="popup__caption">{`${props.card ? props.card.name : ''}`}</p>

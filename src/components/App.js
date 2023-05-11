@@ -9,7 +9,7 @@ function App() {
     const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
     const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
     const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
-    const [selectedCard, setSelectedCard] = React.useState();
+    const [selectedCard, setSelectedCard] = React.useState({name: '', link: ''});
 
     function handleEditAvatarClick() {
         setEditAvatarPopupOpen(true);
@@ -21,13 +21,13 @@ function App() {
         setAddPlacePopupOpen(true);
     }
     function handleCardClick(card) {
-        setSelectedCard(card);
+        setSelectedCard({name: card.name, link: card.link});
     }
     function closeAllPopups() {
         setEditAvatarPopupOpen(false);
         setAddPlacePopupOpen(false);
         setEditProfilePopupOpen(false);
-        setSelectedCard('');
+        setSelectedCard({name: '', link: ''});
     }
     
     return (
@@ -41,32 +41,23 @@ function App() {
             />
             <Footer />
             <ImagePopup card={selectedCard} onClose={closeAllPopups}/>
-            <PopupWithForm name="profile" title="Редактировать профиль" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}
-            children={<>
-                <input id="name-input" className="form__input form__input_value_name" type="text" name="name" value="Eve Eve" minLength="2" maxLength="40" required />
+            <PopupWithForm name="profile" title="Редактировать профиль" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} buttonText="Сохранить">
+                <input id="name-input" className="form__input form__input_value_name" type="text" name="name" defaultValue="Eve Eve" minLength="2" maxLength="40" required />
                 <span className="form__error name-input-error"></span>
-                <input id="status-input" className="form__input form__input_value_status" type="text" name="status" value="sinx^2+cosx^2=1" minLength="2" maxLength="200" required />
+                <input id="status-input" className="form__input form__input_value_status" type="text" name="status" defaultValue="sinx^2+cosx^2=1" minLength="2" maxLength="200" required />
                 <span className="form__error status-input-error"></span>
-                <button aria-label="Кнопка подтверждения" className="form__submit-button" type="submit">Сохранить</button>
-            </>}/>
-            <PopupWithForm name="photo" title="Новое место" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}
-            children={<>
+            </PopupWithForm>
+            <PopupWithForm name="photo" title="Новое место" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} buttonText="Сохранить">
                 <input id="title-input" className="form__input form__input_value_title" type="text" name="title" placeholder="Название" required minLength="2" maxLength="30" />
                 <span className="form__error title-input-error">Вы пропустили это поле.</span>
                 <input id="link-input" className="form__input form__input_value_link" name="link" placeholder="Ссылка на картинку" required type="url" />
                 <span className="form__error link-input-error">Вы пропустили это поле.</span>
-                <button aria-label="Кнопка подтверждения" className="form__submit-button" type="submit">Сохранить</button>
-            </>}/>
-            <PopupWithForm name="confirm" title="Вы уверены?" onClose={closeAllPopups}
-            children={<>
-                <button aria-label="Кнопка подтверждения" className="form__submit-button" type="submit">Да</button>
-            </>}/>
-            <PopupWithForm name="avatar" title="Обновить аватар" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}
-            children={<>
+            </PopupWithForm>
+            <PopupWithForm name="confirm" title="Вы уверены?" onClose={closeAllPopups} buttonText="Да"/>
+            <PopupWithForm name="avatar" title="Обновить аватар" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} buttonText="Сохранить">
                 <input id="avatar-input" className="form__input form__input_avatar" type="url" name="link" required />
                 <span className="form__error avatar-input-error">Вы пропустили это поле.</span>
-                <button aria-label="Кнопка подтверждения" className="form__submit-button" type="submit">Сохранить</button>
-            </>}/>
+            </PopupWithForm>
         </div>
     );
 }
