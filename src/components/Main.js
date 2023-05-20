@@ -8,7 +8,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, onCardLike
         <main className="content">
             <section className="profile">
                 <img className="profile__avatar" src={currentUser.avatar} alt="Аватар профиля"/>
-                <button onClick={onEditAvatar} className="profile__avatar-change-button"></button>
+                <button onClick={onEditAvatar} className="profile__avatar-change-button" />
                 <div className="profile__info">
                     <h1 className="profile__name">{currentUser.name}</h1>
                     <button onClick={onEditProfile} aria-label="Кнопка изменить" className="profile__edit-button" type="button"></button>

@@ -13,7 +13,14 @@ export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
 
     return (
         <PopupWithForm name="avatar" title="Обновить аватар" isOpen={isOpen} onClose={onClose} onSubmit={handleSubmit} buttonText="Сохранить">
-            <input ref={avatarRef} id="avatar-input" className="form__input form__input_avatar" type="url" name="link" required />
+            <input 
+                ref={avatarRef} 
+                id="avatar-input" 
+                className="form__input form__input_avatar" 
+                type="url" 
+                name="link" 
+                required
+            />
             <span className="form__error avatar-input-error">Вы пропустили это поле.</span>
         </PopupWithForm>
     );
